@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import ThemeButton from "../ThemeButton/ThemeButton";
 
 function Header() {
   return (
-    <div>
-      <header>
-        <nav className="w-[30%] h-14 mx-auto my-5 px-3 border border-black rounded-full flex gap-20 justify-center items-center font-bold shadow-2xl sticky">
+    <header>
+      <div className="flex">
+        <nav className="w-[30%] h-16 mx-auto my-5 px-3 border border-black rounded-full flex gap-20 justify-center items-center font-bold shadow-2xl sticky">
           <Link to="/home">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#484a4d"><path d="M252-212h85v-251h286v251h85v-342L480-725 252-554v342ZM126-86v-531l354-266 354 265.67V-86H512v-266h-64v266H126Zm354-382Z"/></svg>
           </Link>
@@ -22,8 +23,9 @@ function Header() {
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#484a4d"><path d="M800-86q-131.1 0-259.05-57Q413-200 307-305.5 201-411 144-539.28T87-799q0-32.14 21.14-53.57Q129.29-874 161-874h161q37 0 60 18t31 52l25 119q6 31-.5 53T411-593l-103 90q16 26 37.5 52.5T396-396q26 26 50 45.5t48 33.5l101-98q20-19 44.5-25.5t53.5-.5l111 25q35 10 52.5 31t17.5 55v169q0 32.14-21.5 53.57T800-86ZM247-616l65-57-15-75h-82q3 34 10.46 66.94Q232.91-648.12 247-616Zm362 363q33 14 68 23t71 14v-83l-74-17-65 63ZM247-616Zm362 363Z"/></svg>
           </Link>
         </nav>
-      </header>
-    </div>
+        <ThemeButton />
+      </div>
+    </header>
   );
 }
 
