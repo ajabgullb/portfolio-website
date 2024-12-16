@@ -1,14 +1,31 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import ThemeButton from "../ThemeButton/ThemeButton";
+import {ThemeContextProvider} from "../../contexts/ThemeContext"
 
 function Header() {
+  const [themeMode, setThemeMode] = useState("light")
+
+  const lightTheme = () => {
+    setThemeMode("light")
+  }
+
+  const darkTheme = () => {
+    setThemeMode("dark")
+  }
+
+  useEffect(() => {
+    document.querySelector("html").classList.remove("light", "dark")
+    document.querySelector("html").classList.add(themeMode)
+  }, [themeMode])
+
   return (
+    <ThemeContextProvider value={{themeMode, lightTheme, darkTheme}}>
     <header>
       <div className="flex">
-        <nav className="w-[30%] h-16 mx-auto my-5 px-3 border border-black rounded-full flex gap-20 justify-center items-center font-bold shadow-2xl sticky">
+        <nav className="w-[30%] h-16 mx-auto my-5 px-3 border border-black rounded-full flex gap-20 justify-center items-center font-bold shadow-2xl sticky dark:bg-gray-800">
           <Link to="/home">
-          <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#484a4d"><path d="M252-212h85v-251h286v251h85v-342L480-725 252-554v342ZM126-86v-531l354-266 354 265.67V-86H512v-266h-64v266H126Zm354-382Z"/></svg>
+          <svg className="" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#484a4d"><path d="M252-212h85v-251h286v251h85v-342L480-725 252-554v342ZM126-86v-531l354-266 354 265.67V-86H512v-266h-64v266H126Zm354-382Z"/></svg>
           </Link>
           <Link to="/about">
           <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#484a4d"><path d="M480-497q-81 0-137.5-56.5T286-691q0-81 56.5-137T480-884q81 0 137.5 56T674-691q0 81-56.5 137.5T480-497ZM126-109v-148q0-43.3 22.7-79.6 22.69-36.3 60.3-55.4 65-32 132.96-48.5Q409.92-457 480-457q72 0 140 16t131 48q37.61 18.96 60.3 54.98Q834-302 834-257.05V-109H126Zm126-126h456v-17q0-10.03-5.5-18.24-5.5-8.2-14.5-12.76-48-23-100-35.5T480-331q-54 0-108 12.5T272-283q-9 4.56-14.5 12.76-5.5 8.21-5.5 18.24v17Zm227.96-388Q508-623 528-642.96q20-19.97 20-48 0-28.04-19.96-47.54-19.97-19.5-48-19.5Q452-758 432-738.32T412-691q0 28.05 19.96 48.03 19.97 19.97 48 19.97Zm.04-68Zm0 456Z"/></svg>
@@ -26,6 +43,7 @@ function Header() {
         <ThemeButton />
       </div>
     </header>
+    </ThemeContextProvider>
   );
 }
 
