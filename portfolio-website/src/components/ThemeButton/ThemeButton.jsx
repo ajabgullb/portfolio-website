@@ -1,13 +1,7 @@
 import React, {useState} from 'react'
-// import useTheme, { ThemeContext } from '../../contexts/ThemeContext';
 
 function ThemeButton() {
-  const [text, setText] = useState("DRK");
-  // const {themeMode, lightTheme, darkTheme} = useTheme()
-
-  const toggleTextAndTheme = () => {
-    setText(text === "DRK" ? "LHT" : "DRK")
-  }
+  const [text, setText] = useState("DRK")
 
   return (
     <div>

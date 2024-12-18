@@ -1,26 +1,8 @@
-import React, {useEffect, useState} from "react";
 import { Link } from "react-router-dom";
 import ThemeButton from "../ThemeButton/ThemeButton";
-import {ThemeContextProvider} from "../../contexts/ThemeContext"
 
 function Header() {
-  const [themeMode, setThemeMode] = useState("light")
-
-  const lightTheme = () => {
-    setThemeMode("light")
-  }
-
-  const darkTheme = () => {
-    setThemeMode("dark")
-  }
-
-  useEffect(() => {
-    document.querySelector("html").classList.remove("light", "dark")
-    document.querySelector("html").classList.add(themeMode)
-  }, [themeMode])
-
   return (
-    <ThemeContextProvider value={{themeMode, lightTheme, darkTheme}}>
     <header>
       <div className="flex">
         <nav className="w-[30%] h-16 mx-auto my-5 px-3 border border-black rounded-full flex gap-20 justify-center items-center font-bold shadow-2xl sticky dark:bg-gray-800">
@@ -43,7 +25,6 @@ function Header() {
         <ThemeButton />
       </div>
     </header>
-    </ThemeContextProvider>
   );
 }
 
