@@ -1,11 +1,19 @@
 import { Link } from "react-router-dom";
+import { useState } from "react";
 import ThemeButton from "../ThemeButton/ThemeButton";
+import {ThemeContextProvider} from '../../contexts/ThemeContext'
+import useTheme from '../../contexts/ThemeContext'
+
+
 
 function Header() {
+  const {themeMode, toggleTheme} = useTheme()
+
   return (
+    <ThemeContextProvider value={{themeMode, toggleTheme}}>
     <header>
-      <div className="flex">
-        <nav className="w-[30%] h-16 mx-auto my-5 px-3 border border-black rounded-full flex gap-20 justify-center items-center font-bold shadow-2xl sticky dark:bg-gray-800">
+      <div className={`flex ${themeMode === "dark" ? "dark" : "light"}`}>
+        <nav className="w-[30%] h-16 mx-auto my-5 px-3 border border-black rounded-full flex gap-20 justify-center items-center font-bold shadow-2xl sticky dark:bg-slate-800">
           <Link to="/home">
           <svg className="" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#484a4d"><path d="M252-212h85v-251h286v251h85v-342L480-725 252-554v342ZM126-86v-531l354-266 354 265.67V-86H512v-266h-64v266H126Zm354-382Z"/></svg>
           </Link>
@@ -25,6 +33,7 @@ function Header() {
         <ThemeButton />
       </div>
     </header>
+    </ThemeContextProvider>
   );
 }
 
