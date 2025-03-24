@@ -1,9 +1,8 @@
-const projectURL = String(import.meta.env.VITE_PROJECT_URL)
-const anonKey = String(import.meta.env.VITE_ANON_KEY)
+const projectURL = String(import.meta.env.VITE_SUPABASE_PROJECT_URL)
+const supabaseKey = String(import.meta.env.VITE_SUPABASE_ANON_KEY)
 
 export {
   projectURL,
-  anonKey,
+  supabaseKey,
 }
 
-console.log(projectURL)
