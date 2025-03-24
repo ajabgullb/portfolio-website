@@ -37,6 +37,20 @@ class Service {
     }
   }
 
+  async getCurrentUser () {
+    try {
+      const { data: { user } } = await supabase.auth.getUser()
+
+      if (!user) {
+        console.error("Supabase Errot :: getCurrentUser: ", error)
+        return {success: false, error: error}
+      }
+    } catch (error) {
+      console.error("Supabase Errot :: getCurrentUser: ", error)
+      return {success: true, user: user}
+    }
+  }
+
   async resetPassword (email) {
     try {
       const isPasswordReset = await supabase.auth.resetPasswordForEmail(email, {
