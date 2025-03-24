@@ -1,11 +1,10 @@
 import React from 'react'
 
-function Github() {
+export default function Blogs() {
   return (
     <div>
-      GitHub
+      Blogs
     </div>
   )
 }
 
-export default Github

@@ -2,14 +2,7 @@ import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
 import {createBrowserRouter, createRoutesFromElements, RouterProvider, Route} from "react-router-dom"
 import './index.css'
-
-import Home from './components/Home/Home.jsx'
-import About from './components/About/About.jsx'
-import Portfolio from './components/Portfolio/Portfolio.jsx'
-import Contact from './components/Contact/Contact.jsx'
-import Github from './components/Github/Github.jsx'
-import Layout from './Layout.jsx'
-
+import { Home, About, Portfolio, Blogs, Contact } from "./components/index"
 // Routing Logic
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,7 +11,7 @@ const router = createBrowserRouter(
       <Route path='home' element={<Home/>}/>
       <Route path='about' element={<About/>}/>
       <Route path='portfolio' element={<Portfolio/>}/>
-      <Route path='github' element={<Github/>}/>
+      <Route path='blogs' element={<Blogs/>}/>
       <Route path='contact' element={<Contact/>}/>
     </Route>
   )
