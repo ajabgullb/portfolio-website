@@ -1,7 +1,7 @@
 import supabase from "./supabaseClient"
 
 class Service {
-  async signUpNewUser (email, password) {
+  async signUpNewUser ({email, password}) {
     try {
       const { data, error } = await supabase.auth.signUp({
         email: email,
@@ -19,7 +19,7 @@ class Service {
     }
   }
 
-  async signInWithEmail (email, password) {
+  async signInWithEmail ({email, password}) {
     try {
       const {data, error} = await supabase.auth.signInWithPassword({
         email: email,
@@ -51,7 +51,7 @@ class Service {
     }
   }
 
-  async resetPassword (email) {
+  async resetPassword ({email}) {
     try {
       const isPasswordReset = await supabase.auth.resetPasswordForEmail(email, {
         redirectTo: "/login"
