@@ -2,46 +2,93 @@ import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
 import {createBrowserRouter, createRoutesFromElements, RouterProvider, Route} from "react-router-dom"
 import './index.css'
-import { Home, About, Portfolio, Blogs, Contact, AddBlog, AuthLayout, RTE } from "./components/index"
+import { AuthLayout,  } from "./components/index"
+import { Home, About, Portfolio, Blogs, Contact, AddBlog, RTE, LogIn } from "./pages/index"
 import Layout from "./Layout"
+import { Provider } from 'react-redux'
+import store from "./store/store"
 
 // Routing Logic
-const router = createBrowserRouter(
-  createRoutesFromElements(
-    <Route path='/' element={<Layout/>}>
-      <AuthLayout authentication={false}>
-        <Route path='' element={<Home/>}/>
-      </AuthLayout>
-      <AuthLayout authentication={false}>
-        <Route path='home' element={<Home/>}/>
-      </AuthLayout>
-      <AuthLayout authentication={false}>
-        <Route path='about' element={<About/>}/>
-      </AuthLayout>
-      <AuthLayout authentication={false}>
-        <Route path='portfolio' element={<Portfolio/>}/>
-      </AuthLayout>
-      <AuthLayout authentication={false}>
-        <Route path='contact' element={<Contact/>}/>
-      </AuthLayout>
-      <AuthLayout authentication>
-        <Route path='blogs' element={<Blogs/>}/>
-      </AuthLayout>
-      <AuthLayout authentication>
-        <Route path='add-blog' element={<AddBlog />}/>
-      </AuthLayout>
-      <AuthLayout authentication>
-        <Route path='/edit-blog/:slug' element={<RTE />}/>
-      </AuthLayout>
-    </Route>
-  )
-)
+const router = createBrowserRouter([
+  {
+    path: "/",
+    element: (
+      <Layout />
+    ),
+    children: [
+      {
+        path: "/home",
+        element: (
+          <AuthLayout authentication={false}>
+            <Home />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/about",
+        element: (
+          <AuthLayout authentication={false}>
+            <About />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/portfolio",
+        element: (
+          <AuthLayout authentication={false}>
+            <Portfolio />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/blogs",
+        element: (
+          <AuthLayout authentication>
+            <Blogs />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/contact",
+        element: (
+          <AuthLayout authentication={false}>
+            <Contact />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/add-blog",
+        element: (
+          <AuthLayout authentication>
+            <AddBlog />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/login",
+        element: (
+          <AuthLayout authentication={false}>
+            <LogIn />
+          </AuthLayout>
+        )
+      },
+      {
+        path: "/edit-blog/:slug",
+        element: (
+          <AuthLayout authentication>
+            <RTE />
+          </AuthLayout>
+        )
+      },
+    ]
+  }
+])
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <RouterProvider router={router}>
-      <Layout />
-    </RouterProvider>
-  </StrictMode>,
+  <Provider store={store}>
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>,
+  </Provider>
 )
 

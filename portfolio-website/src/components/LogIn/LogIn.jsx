@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import authService from '../../supabase/supabaseAuth'
 
-export default function SignIn() {
+export default function LogIn() {
   const {register, handleSubmit} = useForm()
   const navigate = useNavigate()
   const dispatch = useDispatch()
@@ -27,7 +27,7 @@ export default function SignIn() {
 
   return (
     <form onSubmit={handleSubmit(authLogin)}
-      className='w-full flex flex-col gap-5'
+      className='w-1/4 flex flex-col gap-5 mx-auto my-14 border-black border-[2px] rounded-lg'
     >
       {/* Email Input */}
       <Input 
@@ -46,7 +46,6 @@ export default function SignIn() {
       <Input 
         label="Password: "
         type="password"
-        value={password}
         {...register("Password", {required: true})}
         placeholder="Enter your Password..."
       />
@@ -55,7 +54,7 @@ export default function SignIn() {
       <Button
         type='submit'
         onClick={login}
-      />
+      >Submit</Button>
 
       {error && <div className='text-red-600'>{error}</div>}
     </form>
