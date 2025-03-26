@@ -15,6 +15,8 @@ import AddBlog from "./AddBlog/AddBlog"
 import RTE from "./RTE/RTE"
 import EditBlog from "./EditBlog/EditBlog"
 import Container from "./Container/Container"
+import Signup from "./Signup/Signup"
+import Logo from "./Logo"
 
 export {
   Header,
@@ -34,5 +36,7 @@ export {
   RTE,
   EditBlog,
   Container,
+  Signup,
+  Logo,
 }
 

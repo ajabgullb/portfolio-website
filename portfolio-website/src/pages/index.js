@@ -7,6 +7,7 @@ import LogIn from "./LogIn"
 import Portfolio from "./Portfolio"
 import RTE from "./RTE"
 import AddBlog from "./AddBlog"
+import Signup from "./Signup"
 
 export {
   About,
@@ -18,5 +19,6 @@ export {
   Portfolio,
   RTE,
   AddBlog,
+  Signup,
 }
 
