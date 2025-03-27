@@ -1,7 +1,8 @@
 import {StrictMode} from 'react'
 import {createRoot} from 'react-dom/client'
-import {createBrowserRouter, createRoutesFromElements, RouterProvider, Route} from "react-router-dom"
+import {createBrowserRouter, RouterProvider} from "react-router-dom"
 import './index.css'
+
 import { AuthLayout,  } from "./components/index"
 import { Home, About, Portfolio, Blogs, Contact, AddBlog, RTE, LogIn, Signup } from "./pages/index"
 import Layout from "./Layout"

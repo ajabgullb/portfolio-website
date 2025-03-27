@@ -17,6 +17,7 @@ import EditBlog from "./EditBlog/EditBlog"
 import Container from "./Container/Container"
 import Signup from "./Signup/Signup"
 import Logo from "./Logo"
+import Select from './Select'
 
 export {
   Header,
@@ -38,5 +39,6 @@ export {
   Container,
   Signup,
   Logo,
+  Select,
 }
 

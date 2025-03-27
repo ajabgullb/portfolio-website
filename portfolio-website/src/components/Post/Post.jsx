@@ -1,7 +1,7 @@
 import React, { useEffect, useCallback } from 'react'
 import appwriteService from '../../appwrite/conf'
-import { Input, Button, RTE } from "../index"
-import { set, useForm } from 'react-hook-form'
+import { Input, Button, Select, RTE } from "../index"
+import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
 import { useSelector } from 'react-redux'
 
@@ -111,6 +111,13 @@ export default function Post({ post }) {
             className='rounded-lg'
           />
         </div>)}
+
+        <Select 
+          label="Status"
+          className="mb-4"
+          options={["active", "inactive"]}
+          {...register("status", {required: true})}
+        />
 
         <Button 
           type='submit'

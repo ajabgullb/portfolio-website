@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Input, Button, Logo } from "../index"
+import { Link } from 'react-router-dom'
 import { login as authLogin } from "../../store/authSlice"
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -18,8 +19,10 @@ export default function LogIn() {
     try {
       const user = await authService.login({data})
 
-      if (user) dispatch(authLogin(user))
-      navigate("/")
+      if (user) {
+        dispatch(authLogin(user))
+        navigate("/")
+      } 
     } catch (error) {
       setError(error.message)
       console.error("Login Failed!", error)
@@ -34,9 +37,9 @@ export default function LogIn() {
         </span>
       </div>
 
-      <h2 className='text-center text-2xl font-bold leading-tight'>Login in to your Account</h2>
+      <h2 className='text-center text-2xl font-bold leading-tight'>Login to your Account</h2>
 
-      <p className='mt-2 text-center text-base text-black/10'>
+      <p className='mt-2 text-center text-base text-gray-500'>
         Don't have an account?&nbsp;
         <Link
           to="/signup"

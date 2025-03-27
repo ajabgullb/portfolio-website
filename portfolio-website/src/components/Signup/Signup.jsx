@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { Input, Button, Logo } from "../index"
+import { Link } from 'react-router-dom'
 import { login } from "../../store/authSlice"
 import { useForm } from 'react-hook-form'
 import { useNavigate } from 'react-router-dom'
@@ -17,9 +18,10 @@ export default function Signup() {
 
     try {
       const user = await authService.createAccount({data})
-      if (user)  dispatch(login(user))
-      
-      navigate("/")
+      if (user) {
+        dispatch(login(user))
+        navigate("/")
+      } 
     } catch (error) {
       setError(error.message)
       console.error("Login Failed!", error)
@@ -34,14 +36,14 @@ export default function Signup() {
         </span>
       </div>
 
-      <h2 className='text-center text-2xl font-bold leading-tight'>Login in to your Account</h2>
+      <h2 className='text-center text-2xl font-bold leading-tight'>Create a New Account</h2>
 
-      <p className='mt-2 text-center text-base text-black/10'>
+      <p className='mt-2 text-center text-base text-gray-500'>
         Already have an account?&nbsp;
         <Link
           to="/login"
           className='font-medium text-primary tansition-all duration-200 hover:underline'
-        >Login in</Link>
+        >Log In</Link>
       </p>
 
       <form onSubmit={handleSubmit(signup)}
